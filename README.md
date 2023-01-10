@@ -1,6 +1,8 @@
 # GradCafe Analysis
 
-This is an attempt at analyzing `gradcafe` data looking back and trying to make predictions on how the F23 cycle will turn out.
+This is an attempt at analyzing gradcafe data looking back and trying to make predictions on how the F23 cycle will turn out.
+
+This code was forked from [jjdelvalle's gradcafe analysis app](https://github.com/jjdelvalle/gradcafe_analysis) but due to gradcafe entirely revamping their results page, I rewrote the parser and parts of the notebook and scraper to be more compatible with it.
 
 ## Usage
 
@@ -61,9 +63,7 @@ Which results in this image of various stats:
 
 ## Shoutouts
 
-This repository was forked from https://github.com/jjdelvalle/gradcafe_analysis
-
-That code stood on the shoulders of these posts:
+The original repository stood on the shoulders of these posts:
 
 * https://debarghyadas.com/writes/the-grad-school-statistics-we-never-had/
 * https://github.com/deedy/gradcafe_data
