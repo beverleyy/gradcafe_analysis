@@ -24,6 +24,8 @@ Example for searching for data about Stanford Mechanical Engineering PhD's:
 
 `python3 scrape.py -i 'Stanford' -p 'Mech' -d 'PhD' 6`
 
+You can run the scraper as many times as you want to obtain as specific a dataset as you want.
+
 ### Parse the scraped files
 
 This will create a directory with the name of your search query. HTML scraped files will be written in sequential order i.e. `1.html`, `2.html`, etc.
@@ -46,10 +48,10 @@ Finally, use the `GradAnalysis.ipynb` notebook to generate stats for a specific 
 
 ```
 get_uni_stats(dataframe_of_reports,
-				search='search terms',
-				title='Title for graph',
-				degree='degree',
-				field='field')
+	search='search terms',
+	title='Title for graph',
+	degree='degree',
+	field='field')
 
 ```
 
@@ -60,6 +62,8 @@ e.g.:
 Which results in this image of various stats:
 
 ![sample result](app/output/Michigan_Aero_PhD.png)
+
+Remember all the data you scraped in step 1? Assuming you ran the parser on all the directories outputted from the scraper, the notebook will combine all the `.csv` files in the `./data` directory into one large unique dataset that you can query as you wish.
 
 ## Shoutouts
 
