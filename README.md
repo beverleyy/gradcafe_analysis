@@ -22,7 +22,7 @@ Example for the aerospace dataset I used:
 
 Example for searching for data about Stanford Mechanical Engineering PhD's:
 
-`python3 scrape.py -i 'Stanford' -p 'Mech' -d 'PhD' -f 'aero' 6`
+`python3 scrape.py -i 'Stanford' -p 'Mech' -d 'PhD' -f 'stanford' 6`
 
 You can run the scraper as many times as you want to obtain as specific a dataset as you want.
 
