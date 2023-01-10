@@ -12,17 +12,17 @@ This code was forked from [jjdelvalle's gradcafe analysis app](https://github.co
 
 `pages` refers to the number of gradcafe pages searched with 40 results per page. 
 
--q is the catch-all query you type into the big search box on gradcafe. The filters are replicated by the -i, -p and -d flags. 
+`-q` is the catch-all query you type into the big search box on gradcafe. The filters are replicated by the `-i`, `-p` and `-d` flags. 
 
-All of the search options are optional, but the number of pages is not.
+All of the search options are optional, but the number of pages is not. Also, while the `-f FILENAME` is optional, if you are scraping multiple gradcafe queries, I highly recommend specifying this. Otherwise, your earlier scrapes may be overwritten.
 
 Example for the aerospace dataset I used:
 
-`python3 scrape.py -q '*aero*' 133`
+`python3 scrape.py -q '*aero*' -f 'aero' 133`
 
 Example for searching for data about Stanford Mechanical Engineering PhD's:
 
-`python3 scrape.py -i 'Stanford' -p 'Mech' -d 'PhD' 6`
+`python3 scrape.py -i 'Stanford' -p 'Mech' -d 'PhD' -f 'aero' 6`
 
 You can run the scraper as many times as you want to obtain as specific a dataset as you want.
 
