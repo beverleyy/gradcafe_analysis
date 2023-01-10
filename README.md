@@ -1,42 +1,42 @@
 # GradCafe Analysis
 
-This is an attempt at analyzing `gradcafe` data looking back and trying to make predictions on how the F21 cycle will turn out.
-
-### NOTE
-
-The COVID situation might change the behavior or grad admissions this year a lot, so these predictions might not be great.
+This is an attempt at analyzing `gradcafe` data looking back and trying to make predictions on how the F23 cycle will turn out.
 
 ## Usage
 
 ### Scraping
 
-You might wanna analyze non-CS data. To do that you will have to scrape gradcafe results yourself using the `scrape_site.py` script.
+`python3 scrape.py [-q QUERY] [-i INSTITUTION] [-p PROGRAM] [-d DEGREE] [-f FILENAME] pages`
 
-`python scrape_site.py [search term] [number-of-pages]`
+`pages` refers to the number of gradcafe pages searched with 40 results per page. 
 
-Where `search term` is the actual term you would use on GradCafe to find your data; `number-of-pages` would be the number of result pages you get **when you display 250 results per page**.
+-q is the catch-all query you type into the big search box on gradcafe. The filters are replicated by the -i, -p and -d flags. 
 
-What I used to get CS data was the following:
+All of the search options are optional, but the number of pages is not.
 
-`python scrape_site.py computer 257`
+Example for the aerospace dataset I used:
 
-Could have just as well been:
+`python3 scrape.py -q '*aero*' 133`
 
-`python scrape_site.py computer science 257`
+Example for searching for data about Stanford Mechanical Engineering PhD's:
+
+`python3 scrape.py -i 'Stanford' -p 'Mech' -d 'PhD' 6`
 
 ### Parse the scraped files
 
 This will create a directory with the name of your search query. HTML scraped files will be written in sequential order i.e. `1.html`, `2.html`, etc.
 
-Then you will have to run the `parse_html` script in order to process the HTML scraped files and get a usable CSV file which you can then use to analyze whatever you wish. Its functionality is as follows:
+The `parse.py` script is needed to process the HTML scraped files and get a usable CSV file which you can then use to analyze whatever you wish. Its functionality is as follows:
 
-`python parse_html.py [path_to_directory_with_html_files] [title_of_csv] [number_pages]`
+`python3 parse.py filename path pages`
+
+`filename` is the title of the CSV file that comes out, `path` is the path to the directory with the HTML files, and `pages` is how many pages of results you want to process.
 
 A more concrete example would be therefore:
 
-`python parse_html.py data/computer cs 257`
+`python3 parse.py aero data/aero 133`
 
-Where `data/computer` is the path of the directory holding the sequential HTML files. `cs` would be the name of the CSV file inside the `data` directory, and `257` is how many pages you scraped for this search.
+Note that you will have to run the parser for every directory of HTML files you have.
 
 ### Analyze the resulting CSV and have fun
 
@@ -53,15 +53,17 @@ get_uni_stats(dataframe_of_reports,
 
 e.g.: 
 
-`get_uni_stats(df_1620, 'berkeley', 'UC Berkeley', 'PhD', 'CS')`
+`get_uni_stats(df_1720, search='University of Michigan', title='Michigan', degree='PhD', field='Aero'`)
 
 Which results in this image of various stats:
 
-![sample result](app/output/UC%20Berkeley_CS%20PhD.png)
+![sample result](app/output/Michigan_Aero_PhD.png)
 
 ## Shoutouts
 
-I am standing on the shoulders of these posts:
+This repository was forked from https://github.com/jjdelvalle/gradcafe_analysis
+
+That code stood on the shoulders of these posts:
 
 * https://debarghyadas.com/writes/the-grad-school-statistics-we-never-had/
 * https://github.com/deedy/gradcafe_data
