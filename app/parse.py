@@ -156,10 +156,10 @@ def proc(index,col):
         try:
             season = infos[1]
             year = infos[1].split(" ")[1]
+            ist+=1 #change index start to 2
         except:
             year = date_add_date.date().year
             season = " ".join(["Fall",str(year)])
-            ist+=1
         
         ## info 0 should be decision + date
         decision = infos[0]
