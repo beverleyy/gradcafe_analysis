@@ -57,13 +57,21 @@ get_uni_stats(dataframe_of_reports,
 
 e.g.: 
 
-`get_uni_stats(df_1720, search='University of Michigan', title='Michigan', degree='PhD', field='Aero'`)
+`get_uni_stats(df_1720, search='Stanford', title='Stanford', degree='PhD', field='Mech & Aero'`)
 
-Which results in this image of various stats:
+The above uses a subsetted dataframe with data from only the past 5 years (F18-F23). But you can also search the entire dataset by replacing `df_1720` with just `df`.
 
-![sample result](app/output/Michigan_Aero_PhD.png)
+The example line of code will generates this image of various stats:
 
-Remember all the data you scraped in step 1? Assuming you ran the parser on all the directories outputted from the scraper, the notebook will combine all the `.csv` files in the `./data` directory into one large unique dataset that you can query as you wish.
+![sample result](app/output/Stanford_Mech_PhD.png)
+
+Which is kind of informative because from the GPA and GRE score plots, we can see at a glance that the Mech & Aero PhD programs at Stanford seem to skew towards students who test well. For example, most of the reported acceptances and interviews in the last five years come with a 4.0 GPA. Now compare this with my dataset for Michigan's Aero PhD, which seems to be friendlier towards students with slightly more average GPAs in the 3.5-3.8 range. Of course, this comes with the caveat that the Michigan dataset is significantly smaller and I don't think the sample size is sufficient.
+
+![sample result 2](app/output/Michigan_Aero_PhD.png)
+
+Regardless of sample size, the cumulative frequency plots kind of tell you when you can expect to hear back. In the case of Michigan Aero, there seems to be a large mass rejection in the first half of April, which may or may not have something to do with the fact that decision day is on April 15.
+
+Also, remember all the data you scraped in step 1? Assuming you ran the parser on all the directories outputted from the scraper, the notebook will combine all the `.csv` files in the `./data` directory into one large unique dataset that you can query as you wish.
 
 ## Shoutouts
 
