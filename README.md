@@ -73,7 +73,7 @@ Regardless of sample size, the cumulative frequency plots kind of tell you when 
 
 Another thing you can do with the dataset is textual analysis. For example, the `wordcloud` package can generate a word cloud based on frequency of words that appear in the comments of each gradcafe entry, like so:
 
-![stanford word cloud]](app/output/Stanford_Mech_Words.png "title-1" =50%x) ![umich word cloud](Michigan_Aero_Words.png "title-2" =50%x)
+![stanford word cloud](app/output/Stanford_Mech_Words.png "title-1" =50%x) ![umich word cloud](app/output/Michigan_Aero_Words.png "title-2" =50%x)
 
 From the Stanford word cloud on the left, it seems that the most frequent word to appear in gradcafe entries concerned with Stanford's ME PhD program is "interview". Possibly, that indicates that there is a strong correlation between admission results and interviews at this specific program. On the Michigan word cloud on the right, "funding" is the most obvious, and that probably makes sense because the Aero department says on their website very proudly that the program is fully-funded, so advisors probably have to prove that they have enough funds for the student over the entire course of study. What is interesting is also that the word "Masters" appears rather frequently as well, and this could mean a few things: PhD rejectees get offered Masters spots instead, many applicants with a Masters, or something totally different... you probably want another data source to confirm which interpretation is more appropriate.
 
