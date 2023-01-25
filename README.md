@@ -2,7 +2,7 @@
 
 This is an attempt at analyzing gradcafe data looking back and trying to make predictions on how the F23 cycle will turn out.
 
-This code was forked from [jjdelvalle's gradcafe analysis app](https://github.com/jjdelvalle/gradcafe_analysis) but due to gradcafe entirely revamping their results page, I rewrote the parser and parts of the notebook and scraper to be more compatible with it.
+This code was forked from [jjdelvalle's gradcafe analysis app](https://github.com/jjdelvalle/gradcafe_analysis) but due to gradcafe entirely revamping their results page, I rewrote the parser and parts of the notebook and scraper to be more compatible with it. Also, the GRE is all but obsolete in 2023, so I removed the GRE statistics analysis to boycott ETS and their extortionate fees.
 
 ## Usage
 
@@ -14,7 +14,7 @@ This code was forked from [jjdelvalle's gradcafe analysis app](https://github.co
 
 `-q` is the catch-all query you type into the big search box on gradcafe. The filters are replicated by the `-i`, `-p` and `-d` flags. 
 
-All of the search options are optional, but the number of pages is not. Also, while the `-f FILENAME` is optional, if you are scraping multiple gradcafe queries, I highly recommend specifying this. Otherwise, your earlier scrapes may be overwritten.
+All of the search options are optional, but the number of pages is not. Also, while the `-f FILENAME` is optional, if you are scraping multiple gradcafe queries, I highly recommend specifying this. Otherwise, your earlier scrapes may be overwritten (since it will name as default `file`).
 
 Example for the aerospace dataset I used:
 
@@ -28,9 +28,9 @@ You can run the scraper as many times as you want to obtain as specific a datase
 
 ### Parse the scraped files
 
-This will create a directory with the name of your search query. HTML scraped files will be written in sequential order i.e. `1.html`, `2.html`, etc.
+The scraper will create a directory with the name specified by `-f` flag. HTML scraped files will be written in sequential order i.e. `1.html`, `2.html`, etc.
 
-The `parse.py` script is needed to process the HTML scraped files and get a usable CSV file which you can then use to analyze whatever you wish. Its functionality is as follows:
+As such, the `parse.py` script is needed to process the HTML scraped files and get a usable CSV file which you can then use to analyze whatever you wish. Simply run the command for each directory of HTML files scraped earlier:
 
 `python3 parse.py filename path pages`
 
@@ -48,24 +48,26 @@ Finally, use the `GradAnalysis.ipynb` notebook to generate stats for a specific 
 
 ```
 get_uni_stats(dataframe_of_reports,
-	search='search terms',
-	title='Title for graph',
-	degree='degree',
-	field='field')
-
+	 histype='ecdf', #optional, increase granularity
+	 search='university name', #first few characters is ok e.g. 'Mich' for Michigan
+	 major='name of program', #e.g. 'aerospace engineering' or 'aero'
+	 degree='degree type', #MS or PhD
+	 title='Title for graph', 
+	 field='fieldname for graph'
+	)
 ```
 
 e.g.: 
 
-`get_uni_stats(df_1720, search='Stanford', title='Stanford', degree='PhD', field='Mech & Aero'`)
+`get_uni_stats(df_1720, histype='ecdf', search='Stanford', major='Mech', title='Stanford', degree='PhD', field='Mech'`)
 
 The above uses a subsetted dataframe with data from only the past 5 years (F18-F23). But you can also search the entire dataset by replacing `df_1720` with just `df`.
 
-The example line of code will generates this image of various stats:
+The example line of code will generates this image, which shows the cumulative frequency curve of decisions over time as well as the GPA distribution:
 
 ![sample result](app/output/Stanford_Mech_PhD.png)
 
-Which is kind of informative because from the GPA and GRE score plots, we can see at a glance that the Mech & Aero PhD programs at Stanford seem to skew towards students who test well. For example, most of the reported acceptances and interviews in the last five years come with a 4.0 GPA. Now compare this with my dataset for Michigan's Aero PhD, which seems to be friendlier towards students with slightly more average GPAs in the 3.5-3.8 range. Of course, this comes with the caveat that the Michigan dataset is significantly smaller and I don't think the sample size is sufficient.
+Which is kind of informative because from the GPA plot, we can see at a glance that the Mech PhD program at Stanford seem to skew towards students with higher GPAs. For example, most of the reported acceptances and interviews in the last five years come with a 4.0 GPA. Now compare this with my dataset for Michigan's Aero PhD, which seems to be friendlier towards students with slightly more average GPAs in the 3.5-3.8 range. Of course, this comes with the caveat that the Michigan dataset is significantly smaller and I don't think the sample size is sufficient.
 
 ![sample result 2](app/output/Michigan_Aero_PhD.png)
 
@@ -85,7 +87,7 @@ There's so much you can do with gradcafe data!
 
 The original repository stood on the shoulders of these posts:
 
-* https://debarghyadas.com/writes/the-grad-school-statistics-we-never-had/
-* https://github.com/deedy/gradcafe_data
-* https://www.reddit.com/r/gradadmissions/comments/7srxxy/decision_timelines_for_particular_universities/
+* [The grad school statistics we never had](https://debarghyadas.com/writes/the-grad-school-statistics-we-never-had/)
+* [Deedy's Gradcafe Data](https://github.com/deedy/gradcafe_data)
+* [Reddit](https://www.reddit.com/r/gradadmissions/comments/7srxxy/decision_timelines_for_particular_universities/)
 
