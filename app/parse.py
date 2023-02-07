@@ -228,7 +228,7 @@ if __name__ == '__main__':
     n_pages = args.pages
     
     data = []
-    for page in range(1, n_pages):
+    for page in range(1, n_pages+1):
         if not os.path.isfile('{0}/{1}.html'.format(path, page)):
             print("Page {0} not found.".format(page))
             continue
