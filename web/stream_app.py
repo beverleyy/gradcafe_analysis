@@ -349,7 +349,7 @@ def default_view(df_1720,if_recent):
 ############
 
 @st.cache(suppress_st_warning=True,max_entries=1)
-def view_dash(show_all,show_recent,as_table):
+def view_dash(show_all,show_recent,as_table,inst='',deg='',major=''):
 	with st.empty():
 		try:
 			df = grab_data()
@@ -391,6 +391,10 @@ def view_dash(show_all,show_recent,as_table):
 			with st.container():
 				st.markdown("# No data available")
 				st.write("Please use the scraper in the sidebar.")
+
+inst = ''
+major = ''
+deg = ''
 
 #############
 ## SIDEBAR ##
@@ -448,7 +452,7 @@ view_table = 1 if as_table else 0
 if submit_button:
 	url_form = generate_url()
 	call_scraper(url_form)
-	view_dash(view_all,view_recent,view_table)
+	view_dash(view_all,view_recent,view_table,inst,deg,major)
 else:
-	view_dash(view_all,view_recent,view_table)
+	view_dash(view_all,view_recent,view_table,inst,deg,major)
 
