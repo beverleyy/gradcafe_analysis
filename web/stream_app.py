@@ -348,7 +348,7 @@ def default_view(df_1720,if_recent):
 ## OUTPUT ##
 ############
 
-@st.cache_data(max_entries=1)
+@st.cache(suppress_st_warning=True,max_entries=1)
 def view_dash(show_all,show_recent,as_table,inst='',deg='',major=''):
 	with st.empty():
 		try:
@@ -430,7 +430,7 @@ with st.sidebar:
 def generate_url():
 	return "".join(["https://www.thegradcafe.com/survey/?per_page=40","&q=",query,"&institution=",institution,"&program=",program,"&degree=",degree,"&page="])
 
-@st.cache_data(max_entries=1)
+@st.cache(suppress_st_warning=True,max_entries=1)
 def call_scraper(url_form):
 	subprocess.call([f'{sys.executable}','scraper_app.py',str(pages),url_form])
 	subprocess.call([f'{sys.executable}','parser_app.py','file','data/file',str(pages)])
