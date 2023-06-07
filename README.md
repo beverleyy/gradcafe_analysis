@@ -6,6 +6,18 @@ This code was forked from [jjdelvalle's gradcafe analysis app](https://github.co
 
 ## Usage
 
+First you would need to download all the code to your local machine. You can use `git clone`, i.e.
+
+```
+git clone https://github.com/beverleyy/gradcafe_analysis
+```
+
+Then `cd gradcafe_analysis` and install required packages. If using pip, you can simply do
+```
+pip3 install -r requirements.txt
+```
+
+
 ### Scraping
 
 `python3 scrape.py [-q QUERY] [-i INSTITUTION] [-p PROGRAM] [-d DEGREE] [-f FILENAME] pages`
