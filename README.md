@@ -12,13 +12,13 @@ This code was forked from [jjdelvalle's gradcafe analysis app](https://github.co
 
 `pages` refers to the number of gradcafe pages searched with 40 results per page. 
 
-`-q` is the catch-all query you type into the big search box on gradcafe. The filters are replicated by the `-i`, `-p` and `-d` flags. 
+`-q` is the catch-all query you type into the big search box on gradcafe, which seems to accept some flavor of regex. The filters are replicated by the `-i`, `-p` and `-d` flags. 
 
 All of the search options are optional, but the number of pages is not. Also, while the `-f FILENAME` is optional, if you are scraping multiple gradcafe queries, I highly recommend specifying this. Otherwise, your earlier scrapes may be overwritten (since it will name as default `file`).
 
-Example for the aerospace dataset I used:
+Example for the mechanical & aerospace engineering dataset I used:
 
-`python3 scrape.py -q '*aero*' -f 'aero' 133`
+`python3 scrape.py -q '*aero*|*mech*' -f 'file' 500`
 
 Example for searching for data about Stanford Mechanical Engineering PhD's:
 
@@ -38,7 +38,7 @@ As such, the `parse.py` script is needed to process the HTML scraped files and g
 
 A more concrete example would be therefore:
 
-`python3 parse.py aero data/aero 133`
+`python3 parse.py file data/file 500`
 
 Note that you will have to run the parser for every directory of HTML files you have.
 
@@ -82,6 +82,10 @@ From the Stanford word cloud on the left, it seems that the most frequent word t
 Also, remember all the data you scraped in step 1? Assuming you ran the parser on all the directories outputted from the scraper, the notebook will combine all the `.csv` files in the `./data` directory into one large unique dataset that you can query as you wish.
 
 There's so much you can do with gradcafe data!
+
+## Interactive Dashboard
+
+If you install streamlit, you can also run `streamlit run stream_app.py` to get an interactive dashboard that you can use to quickly look at multiple programs within the dataset you scraped.
 
 ## Shoutouts
 
