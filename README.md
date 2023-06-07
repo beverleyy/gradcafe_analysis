@@ -65,11 +65,11 @@ The above uses a subsetted dataframe with data from only the past 5 years (F18-F
 
 The example line of code will generates this image, which shows the cumulative frequency curve of decisions over time as well as the GPA distribution:
 
-![sample result](app/output/Stanford_Mech_PhD.png)
+![sample result](output/Stanford_Mech_PhD.png)
 
 Which is kind of informative because from the GPA plot, we can see at a glance that the Mech PhD program at Stanford seem to skew towards students with higher GPAs. For example, most of the reported acceptances and interviews in the last five years come with a 4.0 GPA. Now compare this with my dataset for Michigan's Aero PhD, which seems to be friendlier towards students with slightly more average GPAs in the 3.5-3.8 range. Of course, this comes with the caveat that the Michigan dataset is significantly smaller and I don't think the sample size is sufficient.
 
-![sample result 2](app/output/Michigan_Aero_PhD.png)
+![sample result 2](output/Michigan_Aero_PhD.png)
 
 Regardless of sample size, the cumulative frequency plots kind of tell you when you can expect to hear back. In the case of Michigan Aero, there seems to be a large mass rejection in the first half of April, which may or may not have something to do with the fact that decision day is on April 15.
 
